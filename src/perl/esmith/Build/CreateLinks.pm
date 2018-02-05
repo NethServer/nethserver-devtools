@@ -73,6 +73,7 @@ sub safe_symlink($$) {
     unlink($to) if -f $to;
     symlink($from, $to)
 	or die "Can't create symlink from $from to $to: $!";
+    print $to . "\n";
 }
 
 =head2 panel_link
@@ -219,6 +220,7 @@ sub safe_touch
     }
     open(F, ">$path") or die "Could not open/create file $path: $!";
     close(F) or die "Could not close file $path: $!";
+    print $path . "\n";
 }
 
 =head2 templates2events
@@ -303,6 +305,7 @@ sub event_services
         open(my $fh, '>', $dir . $service);
         print $fh "$action\n";
         close $fh;
+        print $dir . $service . "\n";
     }    
 }
 
